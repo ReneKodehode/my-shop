@@ -14,11 +14,34 @@ const DropdownMenu = ({ products }) => {
 
   //populate
 
+  const findAndAddToMainMenu = (product) => {
+    const Menu = productsMenu[0].submenu;
+
+    const index = Menu.findIndex(
+      (object) => object.title === product.mainCategory
+    );
+    if (index === -1) {
+      Menu.push({
+        title: product.mainCategory,
+        linkTo: "/product" + product.category + product.id,
+      });
+    }
+  };
+
+  const findAndAddToSubMenu = (product) => {
+    const Menu = productsMenu[0].submenu;
+
+    const index = Menu.findIndex(
+      (object) => object.title === product.mainCategory
+    );
+  };
+
   useEffect(() => {
     for (const product of products) {
-      console.log(product.mainCategory);
-      console.log(product.subCategory);
+      findAndAddToMainMenu(product);
+      findAndAddToSubMenu(product);
     }
+
     // if (category !== product) {
     //   productsMenu[0].submenu.push({
     //     title: category,
