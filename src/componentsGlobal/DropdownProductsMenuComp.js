@@ -14,54 +14,19 @@ const DropdownMenu = ({ products }) => {
 
   //populate
 
-  useEffect(
-    () => {
-      let mySet = new Set();
-
-      for (const product of products) {
-        let string = product.category;
-        let split = string.split("/");
-        let array1 = [];
-        let array2 = [];
-
-        for (let some of split) {
-          if (some !== "") {
-            array1.push(some);
-          }
-        }
-        mySet.add(array1[0]);
-        mySet.add(array1);
-      }
-      let array4 = [];
-      let array5 = [];
-
-      for (let some of mySet) {
-        if (typeof some === "string") {
-          array4.push(some);
-        } else {
-          array5.push(some);
-        }
-      }
-      console.log(array4);
-      console.log(array5);
-      for (let some of array4) {
-        let answer = Array.prototype.flatMap(array5, some);
-        console.log(answer);
-      }
-
-      console.log(mySet);
-      setList(mySet);
-      // if (category !== product) {
-      //   productsMenu[0].submenu.push({
-      //     title: category,
-      //     linkTo: "/product" + product.category + product.id,
-      //   });
-      //   console.log(category);
-      // }
-    },
-    [products],
-    list
-  );
+  useEffect(() => {
+    for (const product of products) {
+      console.log(product.mainCategory);
+      console.log(product.subCategory);
+    }
+    // if (category !== product) {
+    //   productsMenu[0].submenu.push({
+    //     title: category,
+    //     linkTo: "/product" + product.category + product.id,
+    //   });
+    //   console.log(category);
+    // }
+  }, [products]);
 
   console.log(list);
   return (
