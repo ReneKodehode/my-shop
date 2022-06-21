@@ -21,22 +21,36 @@ const DropdownMenu = ({ products }) => {
       for (const product of products) {
         let string = product.category;
         let split = string.split("/");
-        let array = [];
+        let array1 = [];
+        let array2 = [];
 
         for (let some of split) {
           if (some !== "") {
-            array.push(some);
+            array1.push(some);
           }
         }
-
-        for (const category in array) {
-          mySet.add(array[0]);
-          if (array[category] !== array[0]) {
-            console.log(array[category]);
-          }
-        }
-        setList(mySet);
+        mySet.add(array1[0]);
+        mySet.add(array1);
       }
+      let array4 = [];
+      let array5 = [];
+
+      for (let some of mySet) {
+        if (typeof some === "string") {
+          array4.push(some);
+        } else {
+          array5.push(some);
+        }
+      }
+      console.log(array4);
+      console.log(array5);
+      for (let some of array4) {
+        let answer = Array.prototype.flatMap(array5, some);
+        console.log(answer);
+      }
+
+      console.log(mySet);
+      setList(mySet);
       // if (category !== product) {
       //   productsMenu[0].submenu.push({
       //     title: category,
