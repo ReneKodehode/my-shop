@@ -13,33 +13,75 @@ const DropdownMenu = ({ products }) => {
   const [list, setList] = useState([]);
 
   //populate
+  const addToMenu = (product, Menu, setOfSubmenu) => {
+    const subCategory = product.subCategory;
+    const idx = Menu.findIndex(
+      (object) => object.submenu.title === subCategory
+    );
+    console.log(Menu.indexOf((item) => item.title === product.mainCategory));
 
-  const findAndAddToMainMenu = (product) => {
+    for (let some in subCategory) {
+      if (idx === -1 && setOfSubmenu.has(subCategory[some])) {
+        console.log(some);
+        if (some === "0") {
+          Menu.find((item) => item.title === product.mainCategory).submenu.push(
+            {
+              title: subCategory[some],
+              linkTo: "/product" + product.category + product.id,
+              submenu: [],
+            }
+          );
+          setOfSubmenu.delete(subCategory[some]);
+        } else {
+          console.log("this is here" + some);
+          addToMenu(product, Menu, setOfSubmenu);
+        }
+      }
+    }
+  };
+
+  const findAndAddToMenu = (product) => {
     const Menu = productsMenu[0].submenu;
-
+    const setOfSubmenu = new Set();
+    setOfSubmenu.add(...product.subCategory);
+    //add to main Category
     const index = Menu.findIndex(
       (object) => object.title === product.mainCategory
     );
     if (index === -1) {
       Menu.push({
         title: product.mainCategory,
-        linkTo: "/product" + product.category + product.id,
+        linkTo: "/products/" + product.mainCategory,
+        submenu: [],
       });
     }
-  };
+    addToMenu(product, Menu, setOfSubmenu);
 
-  const findAndAddToSubMenu = (product) => {
-    const Menu = productsMenu[0].submenu;
+    console.log(Menu);
+    //add to Sub category
+    // console.log(product.subCategory.length);
 
-    const index = Menu.findIndex(
-      (object) => object.title === product.mainCategory
-    );
+    // if (product.subCategory.length === 1) {
+    //   for (let other of Menu) {
+    //     const idx = other.submenu.findIndex(
+    //       (object) => object.subCategory === product.subCategory
+    //     );
+    //     if (idx === -1) {
+    //       other.submenu.push({
+    //         title: product.subCategory,
+    //         linkTo: "/product" + product.category + product.id,
+    //         submenu: [],
+    //       });
+    //     }
+    //   }
+    // } else {
+    //   console.log(product);
+    // }
   };
 
   useEffect(() => {
     for (const product of products) {
-      findAndAddToMainMenu(product);
-      findAndAddToSubMenu(product);
+      findAndAddToMenu(product);
     }
 
     // if (category !== product) {
@@ -51,7 +93,6 @@ const DropdownMenu = ({ products }) => {
     // }
   }, [products]);
 
-  console.log(list);
   return (
     <Menus>
       {productsMenu.map((menu, index) => {

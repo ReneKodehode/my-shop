@@ -40,6 +40,19 @@ const Products = [
     subCategory: ["computerComponents", "cpu"],
     image: ["image", "image2"],
   },
+  {
+    id: 141,
+    name: "chair",
+    description: "a computation processing unit",
+    number: 1234,
+    rating: 4.5,
+    beforePrice: 2145,
+    price: 2100,
+    category: "/appliance/furniture/chair",
+    mainCategory: "appliance",
+    subCategory: ["furniture", "chair"],
+    image: ["image", "image2"],
+  },
 ];
 
 export default Products;
