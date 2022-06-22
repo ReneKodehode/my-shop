@@ -13,33 +13,49 @@ const DropdownMenu = ({ products }) => {
   const [list, setList] = useState([]);
 
   //populate
+  // const addToMenu = (product, Menu, setOfSubmenu) => {
+  //   const subCategory = product.subCategory;
+  //   const idx = Menu.findIndex(
+  //     (object) => object.submenu.title === subCategory
+  //   );
+  //   console.log(Menu.indexOf((item) => item.title === product.mainCategory));
 
-  const findAndAddToMainMenu = (product) => {
-    const Menu = productsMenu[0].submenu;
+  //   for (let some in subCategory) {
+  //     if (idx === -1 && setOfSubmenu.has(subCategory[some])) {
+  //       console.log(some);
+  //       if (some === "0") {
+  //         Menu.find((item) => item.title === product.mainCategory).submenu.push(
+  //           {
+  //             title: subCategory[some],
+  //             linkTo: "/product" + product.category + product.id,
+  //             submenu: [],
+  //           }
+  //         );
+  //         setOfSubmenu.delete(subCategory[some]);
+  //       } else {
+  //         console.log("this is here" + some);
+  //         addToMenu(product, Menu, setOfSubmenu);
+  //       }
+  //     }
+  //   }
+  // };
 
-    const index = Menu.findIndex(
-      (object) => object.title === product.mainCategory
-    );
-    if (index === -1) {
-      Menu.push({
-        title: product.mainCategory,
-        linkTo: "/product" + product.category + product.id,
-      });
+  const findAndAddToMenu = (product) => {
+    let depthlevel;
+    for (let some of product){
+      console.log();
     }
-  };
 
-  const findAndAddToSubMenu = (product) => {
-    const Menu = productsMenu[0].submenu;
-
-    const index = Menu.findIndex(
-      (object) => object.title === product.mainCategory
-    );
+    productsMenu.push{
+      title: "Products",
+      linkTo: "#",
+      submenu: [],
+    },
   };
 
   useEffect(() => {
     for (const product of products) {
-      findAndAddToMainMenu(product);
-      findAndAddToSubMenu(product);
+      findAndAddToMenu(product);
     }
 
     // if (category !== product) {
@@ -51,7 +67,6 @@ const DropdownMenu = ({ products }) => {
     // }
   }, [products]);
 
-  console.log(list);
   return (
     <Menus>
       {productsMenu.map((menu, index) => {
