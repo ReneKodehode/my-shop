@@ -7,65 +7,243 @@ import {
 } from "./DropdownProductsMenuStyled";
 import { useState, useEffect, useRef } from "react";
 import MenuIcon from "./../img/Menu.svg";
+import Products from "../ProductLists";
 
 //mainComponent
-const DropdownMenu = ({ products }) => {
-  const [list, setList] = useState([]);
-
-  //populate
-  // const addToMenu = (product, Menu, setOfSubmenu) => {
-  //   const subCategory = product.subCategory;
-  //   const idx = Menu.findIndex(
-  //     (object) => object.submenu.title === subCategory
-  //   );
-  //   console.log(Menu.indexOf((item) => item.title === product.mainCategory));
-
-  //   for (let some in subCategory) {
-  //     if (idx === -1 && setOfSubmenu.has(subCategory[some])) {
-  //       console.log(some);
-  //       if (some === "0") {
-  //         Menu.find((item) => item.title === product.mainCategory).submenu.push(
-  //           {
-  //             title: subCategory[some],
-  //             linkTo: "/product" + product.category + product.id,
-  //             submenu: [],
-  //           }
-  //         );
-  //         setOfSubmenu.delete(subCategory[some]);
-  //       } else {
-  //         console.log("this is here" + some);
-  //         addToMenu(product, Menu, setOfSubmenu);
-  //       }
-  //     }
-  //   }
-  // };
-
-  const findAndAddToMenu = (product) => {
-    let depthlevel;
-    for (let some of product){
-      console.log();
+const DropdownMenu = () => {
+  const setAllProductsToMenu = (
+    submenu,
+    Menu,
+    productCategory,
+    MenuMainCategoryIndex
+  ) => {
+    switch (submenu) {
+      case "0":
+        if (JSON.stringify(Menu).indexOf(productCategory[submenu]) > -1) {
+          console.log("here");
+        } else {
+          Menu.push(
+            productsObject(
+              productCategory[submenu],
+              "/category/" + productCategory[submenu],
+              []
+            )
+          );
+        }
+        break;
+      case "1":
+        if (
+          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
+            productCategory[submenu]
+          ) > -1
+        ) {
+          console.log("there");
+        } else {
+          Menu[MenuMainCategoryIndex].submenu.push(
+            productsObject(
+              productCategory[submenu],
+              "/category/" +
+                productCategory[0] +
+                "/" +
+                productCategory[submenu],
+              []
+            )
+          );
+        }
+        break;
+      case "2":
+        if (
+          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
+            productCategory[submenu]
+          ) > -1
+        ) {
+          console.log("way");
+        } else {
+          Menu[MenuMainCategoryIndex].submenu.push(
+            productsObject(
+              productCategory[submenu],
+              "/category/" +
+                productCategory[0] +
+                "/" +
+                productCategory[1] +
+                "/" +
+                productCategory[submenu],
+              []
+            )
+          );
+        }
+        break;
+      case "3":
+        if (
+          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
+            productCategory[submenu]
+          ) > -1
+        ) {
+          console.log("there");
+        } else {
+          Menu[MenuMainCategoryIndex].submenu.push(
+            productsObject(
+              productCategory[submenu],
+              "/category/" +
+                productCategory[0] +
+                "/" +
+                productCategory[submenu],
+              []
+            )
+          );
+        }
+        break;
+      case "4":
+        if (
+          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
+            productCategory[submenu]
+          ) > -1
+        ) {
+          console.log("there");
+        } else {
+          Menu[MenuMainCategoryIndex].submenu.push(
+            productsObject(
+              productCategory[submenu],
+              "/category/" +
+                productCategory[0] +
+                "/" +
+                productCategory[submenu],
+              []
+            )
+          );
+        }
+        break;
+      case "5":
+        if (
+          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
+            productCategory[submenu]
+          ) > -1
+        ) {
+          console.log("there");
+        } else {
+          Menu[MenuMainCategoryIndex].submenu.push(
+            productsObject(
+              productCategory[submenu],
+              "/category/" +
+                productCategory[0] +
+                "/" +
+                productCategory[submenu],
+              []
+            )
+          );
+        }
+        break;
+      default:
+        console.log("to Many subCategories");
+        break;
     }
+  };
 
-    productsMenu.push{
-      title: "Products",
-      linkTo: "#",
-      submenu: [],
-    },
+  const productsObject = (title, linkTo, submenu) => {
+    const object = {
+      title: title,
+      linkTo: linkTo,
+      submenu: submenu,
+    };
+    return object;
+  };
+
+  const findAllProducts = (Products) => {
+    for (const product of Products) {
+      const productCategory = product.category.split("/").filter((n) => n);
+
+      for (const submenu in productCategory) {
+        const Menu = productsMenu[0].submenu;
+        const MenuSecondIndex = Menu.findIndex(
+          (obj) => obj.title === productCategory[0]
+        );
+        if (submenu === "0") {
+          setAllProductsToMenu(submenu, Menu, productCategory);
+        } else if (submenu === "1") {
+          const MenuMainCategoryIndex = Menu.findIndex(
+            (obj) => obj.title === productCategory[0]
+          );
+          setAllProductsToMenu(
+            submenu,
+            Menu,
+            productCategory,
+            MenuMainCategoryIndex
+          );
+        } else if (submenu === "2") {
+          const MenuMainCategoryIndex = Menu[MenuSecondIndex].submenu.findIndex(
+            (obj) => obj.title === productCategory[1]
+          );
+          console.log(MenuMainCategoryIndex);
+          setAllProductsToMenu(
+            submenu,
+            Menu,
+            productCategory,
+            MenuMainCategoryIndex
+          );
+        }
+        // else if (submenu === "3") {
+        //   const MenuMainCategoryIndex = Menu.findIndex(
+        //     (obj) => obj.title === productCategory[0]
+        //   );
+        //   setAllProductsToMenu(
+        //     submenu,
+        //     Menu,
+        //     productCategory,
+        //     MenuMainCategoryIndex
+        //   );
+        // } else if (submenu === "4") {
+        //   const MenuMainCategoryIndex = Menu.findIndex(
+        //     (obj) => obj.title === productCategory[0]
+        //   );
+        //   setAllProductsToMenu(
+        //     submenu,
+        //     Menu,
+        //     productCategory,
+        //     MenuMainCategoryIndex
+        //   );
+        // } else if (submenu === "5") {
+        //   const MenuMainCategoryIndex = Menu.findIndex(
+        //     (obj) => obj.title === productCategory[0]
+        //   );
+        //   setAllProductsToMenu(
+        //     submenu,
+        //     Menu,
+        //     productCategory,
+        //     MenuMainCategoryIndex
+        //   );
+        // }
+
+        // this is for subcategorys
+
+        // if (
+        //   JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
+        //     productCategory[submenu]
+        //   ) > -1
+        // ) {
+        //   console.log("there");
+        // } else {
+        //   Menu[MenuMainCategoryIndex].submenu.push(
+        //     productsObject(
+        //       productCategory[0],
+        //       "/category/" + product.mainCategory + "/" + productCategory[0],
+        //       []
+        //     )
+        //   );
+        // }
+      }
+    }
   };
 
   useEffect(() => {
-    for (const product of products) {
-      findAndAddToMenu(product);
-    }
+    findAllProducts(Products);
 
-    // if (category !== product) {
     //   productsMenu[0].submenu.push({
     //     title: category,
     //     linkTo: "/product" + product.category + product.id,
     //   });
-    //   console.log(category);
-    // }
-  }, [products]);
+
+    // const idx = Menu.findIndex((object) => object.submenu.title === subCategory);
+  }, []);
 
   return (
     <Menus>
