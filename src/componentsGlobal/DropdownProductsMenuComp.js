@@ -15,7 +15,11 @@ const DropdownMenu = () => {
     submenu,
     Menu,
     productCategory,
-    MenuMainCategoryIndex
+    Menu1,
+    Menu2,
+    Menu3,
+    Menu4,
+    Menu5
   ) => {
     switch (submenu) {
       case "0":
@@ -32,14 +36,10 @@ const DropdownMenu = () => {
         }
         break;
       case "1":
-        if (
-          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
-            productCategory[submenu]
-          ) > -1
-        ) {
+        if (JSON.stringify(Menu1).indexOf(productCategory[submenu]) > -1) {
           console.log("there");
         } else {
-          Menu[MenuMainCategoryIndex].submenu.push(
+          Menu1.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
@@ -52,14 +52,10 @@ const DropdownMenu = () => {
         }
         break;
       case "2":
-        if (
-          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
-            productCategory[submenu]
-          ) > -1
-        ) {
+        if (JSON.stringify(Menu2).indexOf(productCategory[submenu]) > -1) {
           console.log("way");
         } else {
-          Menu[MenuMainCategoryIndex].submenu.push(
+          Menu2.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
@@ -74,14 +70,10 @@ const DropdownMenu = () => {
         }
         break;
       case "3":
-        if (
-          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
-            productCategory[submenu]
-          ) > -1
-        ) {
+        if (JSON.stringify(Menu3).indexOf(productCategory[submenu]) > -1) {
           console.log("there");
         } else {
-          Menu[MenuMainCategoryIndex].submenu.push(
+          Menu3.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
@@ -94,14 +86,10 @@ const DropdownMenu = () => {
         }
         break;
       case "4":
-        if (
-          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
-            productCategory[submenu]
-          ) > -1
-        ) {
+        if (JSON.stringify(Menu4).indexOf(productCategory[submenu]) > -1) {
           console.log("there");
         } else {
-          Menu[MenuMainCategoryIndex].submenu.push(
+          Menu4.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
@@ -114,14 +102,10 @@ const DropdownMenu = () => {
         }
         break;
       case "5":
-        if (
-          JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
-            productCategory[submenu]
-          ) > -1
-        ) {
+        if (JSON.stringify(Menu5).indexOf(productCategory[submenu]) > -1) {
           console.log("there");
         } else {
-          Menu[MenuMainCategoryIndex].submenu.push(
+          Menu5.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
@@ -151,68 +135,80 @@ const DropdownMenu = () => {
   const findAllProducts = (Products) => {
     for (const product of Products) {
       const productCategory = product.category.split("/").filter((n) => n);
+      let Menu1;
+      let Menu2;
+      let Menu3;
+      let Menu4;
+      let Menu5;
 
       for (const submenu in productCategory) {
         const Menu = productsMenu[0].submenu;
-        const MenuSecondIndex = Menu.findIndex(
-          (obj) => obj.title === productCategory[0]
-        );
+
         if (submenu === "0") {
           setAllProductsToMenu(submenu, Menu, productCategory);
         } else if (submenu === "1") {
-          const MenuMainCategoryIndex = Menu.findIndex(
-            (obj) => obj.title === productCategory[0]
-          );
+          Menu1 = Menu.findIndex((obj) => obj.title === productCategory[0]);
           setAllProductsToMenu(
             submenu,
             Menu,
             productCategory,
-            MenuMainCategoryIndex
+            Menu[Menu1].submenu
           );
         } else if (submenu === "2") {
-          const MenuMainCategoryIndex = Menu[MenuSecondIndex].submenu.findIndex(
+          Menu2 = Menu[Menu1].submenu.findIndex(
             (obj) => obj.title === productCategory[1]
           );
-          console.log(MenuMainCategoryIndex);
           setAllProductsToMenu(
             submenu,
             Menu,
             productCategory,
-            MenuMainCategoryIndex
+            Menu1,
+            Menu[Menu1].submenu[Menu2].submenu
           );
+        } else if (submenu === "3") {
+          Menu3 = Menu[Menu1].submenu[Menu2].submenu.findIndex(
+            (obj) => obj.title === productCategory[2]
+          );
+          setAllProductsToMenu(
+            submenu,
+            Menu,
+            productCategory,
+            Menu1,
+            Menu[Menu1].submenu[Menu2].submenu,
+            Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu
+          );
+        } else if (submenu === "4") {
+          Menu4 = Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu.findIndex(
+            (obj) => obj.title === productCategory[3]
+          );
+          setAllProductsToMenu(
+            submenu,
+            Menu,
+            productCategory,
+            Menu1,
+            Menu[Menu1].submenu[Menu2].submenu,
+            Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu,
+            Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu[Menu4].submenu
+          );
+        } else if (submenu === "5") {
+          Menu5 = Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu[
+            Menu4
+          ].submenu.findIndex((obj) => obj.title === productCategory[4]);
+          setAllProductsToMenu(
+            submenu,
+            Menu,
+            productCategory,
+            Menu1,
+            Menu[Menu1].submenu[Menu2].submenu,
+            Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu,
+            Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu[Menu4].submenu,
+            Menu[Menu1].submenu[Menu2].submenu[Menu3].submenu[Menu4].submenu[
+              Menu5
+            ].submenu
+          );
+        } else if (submenu === "6") {
+          setAllProductsToMenu(submenu);
         }
-        // else if (submenu === "3") {
-        //   const MenuMainCategoryIndex = Menu.findIndex(
-        //     (obj) => obj.title === productCategory[0]
-        //   );
-        //   setAllProductsToMenu(
-        //     submenu,
-        //     Menu,
-        //     productCategory,
-        //     MenuMainCategoryIndex
-        //   );
-        // } else if (submenu === "4") {
-        //   const MenuMainCategoryIndex = Menu.findIndex(
-        //     (obj) => obj.title === productCategory[0]
-        //   );
-        //   setAllProductsToMenu(
-        //     submenu,
-        //     Menu,
-        //     productCategory,
-        //     MenuMainCategoryIndex
-        //   );
-        // } else if (submenu === "5") {
-        //   const MenuMainCategoryIndex = Menu.findIndex(
-        //     (obj) => obj.title === productCategory[0]
-        //   );
-        //   setAllProductsToMenu(
-        //     submenu,
-        //     Menu,
-        //     productCategory,
-        //     MenuMainCategoryIndex
-        //   );
-        // }
-
         // this is for subcategorys
 
         // if (
