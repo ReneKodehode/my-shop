@@ -26,8 +26,8 @@ function App() {
 
   return (
     <div>
-      <GlobalStyled />
       <Router basename={process.env.PUBLIC_URL}>
+        <GlobalStyled />
         <NavBar>
           <Logo to="/">My-Shop</Logo>
           <DropdownMenu products={Products}></DropdownMenu>
