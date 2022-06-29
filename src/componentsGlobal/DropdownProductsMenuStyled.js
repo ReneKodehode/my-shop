@@ -11,12 +11,12 @@ export const StyledMenuItems = styled.li`
   list-style: none;
   justify-content: left;
   box-sizing: border-box;
+  justify-self: center;
   img {
     justify-content: center;
     border: none;
-    margin: 0;
-    padding: 0;
-    width: 32px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   a {
@@ -35,32 +35,38 @@ export const StyledMenuItems = styled.li`
 
 export const StyledArrowSpan = styled.span`
   align-self: center;
+  position: absolute;
+  right: 0;
+
+  &.arrow {
+  }
 `;
 
 export const StyledDropdown = styled.ul`
   position: absolute;
   top: 4rem;
-  min-width: 10 rem;
+  height: 2rem;
   list-style: none;
-  background-color: #242526;
-  color: #dadce1;
-  margin-left: 1px;
+  background-color: black;
+  color: white;
+  margin-left: 0.9px;
   display: none;
   border-radius: 8px;
-  transition: height 500ms ease;
 
   a:hover {
     transition: background 500ms;
     background-color: #525357;
     border-radius: 8px;
+    filter: brightness(1.2);
   }
   &.show {
     display: block;
+    height: fit-content;
   }
   &.dropdown-submenu {
+    min-height: 100%;
     position: absolute;
     left: 100%;
-    height: inherit;
     top: 0;
   }
 `;

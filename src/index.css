@@ -1,3 +1,4 @@
+
 :root {
   --bg:  #242526;
   --bg-accent: #484a4d;
@@ -39,7 +40,6 @@ a {
 
 /* <li> */
 .nav-item {
-  width: calc(var(--nav-size) * 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,9 +47,10 @@ a {
 
 
 .icon-button svg { 
-  fill: var(--text-color);
-  width: 20px;
-  height: 20px;
+  fill: black;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 1rem;
 }
 
 
@@ -126,7 +127,7 @@ a {
 .menu-secondary-exit {
 
 }
-.menu-secondary-exit-active {
+ .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
 }

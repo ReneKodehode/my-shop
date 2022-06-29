@@ -9,12 +9,21 @@ import {
   SearchBar,
   ShoppingCart,
 } from "./componentsGlobal/StyledComponentsGlobal";
+import CategoryPage from "./pages/CategoryPage";
 import LandingPage from "./pages/LandingPage.js";
 import PageNotFound404 from "./pages/PageNotFound404";
 import ProductPage from "./pages/ProductPage";
 import Products from "./ProductLists";
+import Categories from "./CategoryList";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState([Categories]);
+
+  useEffect(() => {
+    setSelectedCategory(Categories);
+  }, []);
+
   return (
     <div>
       <GlobalStyled />
@@ -29,6 +38,12 @@ function App() {
           </NavLink>
         </NavBar>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/product-page"
+            element={<ProductPage product={Products[1]} />}
+          />
+          {/* add routes to each product */}
           {Products.map((product, index) => (
             <Route
               key={index}
@@ -36,11 +51,14 @@ function App() {
               element={<ProductPage product={product} />}
             ></Route>
           ))}
-          <Route path="/" element={<LandingPage />} />
-          <Route
-            path="/product-page"
-            element={<ProductPage product={Products[1]} />}
-          />
+          {/* add routes to each category */}
+          {selectedCategory.map((category, index) => (
+            <Route
+              key={index}
+              path={"/" + category}
+              element={<CategoryPage thisCategory={category} />}
+            ></Route>
+          ))}
           <Route path="*" element={<PageNotFound404 />} />
         </Routes>
       </Router>

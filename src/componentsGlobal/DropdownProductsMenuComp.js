@@ -8,6 +8,7 @@ import {
 import { useState, useEffect, useRef } from "react";
 import MenuIcon from "./../img/Menu.svg";
 import Products from "../ProductLists";
+import Categories from "../CategoryList";
 
 //mainComponent
 const DropdownMenu = () => {
@@ -24,8 +25,8 @@ const DropdownMenu = () => {
     switch (submenu) {
       case "0":
         if (JSON.stringify(Menu).indexOf(productCategory[submenu]) > -1) {
-          console.log("here");
         } else {
+          Categories.push("/category/" + productCategory[submenu]);
           Menu.push(
             productsObject(
               productCategory[submenu],
@@ -37,8 +38,10 @@ const DropdownMenu = () => {
         break;
       case "1":
         if (JSON.stringify(Menu1).indexOf(productCategory[submenu]) > -1) {
-          console.log("there");
         } else {
+          Categories.push(
+            "/category/" + productCategory[0] + "/" + productCategory[submenu]
+          );
           Menu1.push(
             productsObject(
               productCategory[submenu],
@@ -53,8 +56,15 @@ const DropdownMenu = () => {
         break;
       case "2":
         if (JSON.stringify(Menu2).indexOf(productCategory[submenu]) > -1) {
-          console.log("way");
         } else {
+          Categories.push(
+            "/category/" +
+              productCategory[0] +
+              "/" +
+              productCategory[1] +
+              "/" +
+              productCategory[submenu]
+          );
           Menu2.push(
             productsObject(
               productCategory[submenu],
@@ -71,13 +81,26 @@ const DropdownMenu = () => {
         break;
       case "3":
         if (JSON.stringify(Menu3).indexOf(productCategory[submenu]) > -1) {
-          console.log("there");
         } else {
+          Categories.push(
+            "/category/" +
+              productCategory[0] +
+              "/" +
+              productCategory[1] +
+              "/" +
+              productCategory[2] +
+              "/" +
+              productCategory[submenu]
+          );
           Menu3.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
                 productCategory[0] +
+                "/" +
+                productCategory[1] +
+                "/" +
+                productCategory[2] +
                 "/" +
                 productCategory[submenu],
               []
@@ -87,13 +110,30 @@ const DropdownMenu = () => {
         break;
       case "4":
         if (JSON.stringify(Menu4).indexOf(productCategory[submenu]) > -1) {
-          console.log("there");
         } else {
+          Categories.push(
+            "/category/" +
+              productCategory[0] +
+              "/" +
+              productCategory[1] +
+              "/" +
+              productCategory[2] +
+              "/" +
+              productCategory[3] +
+              "/" +
+              productCategory[submenu]
+          );
           Menu4.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
                 productCategory[0] +
+                "/" +
+                productCategory[1] +
+                "/" +
+                productCategory[2] +
+                "/" +
+                productCategory[3] +
                 "/" +
                 productCategory[submenu],
               []
@@ -103,13 +143,34 @@ const DropdownMenu = () => {
         break;
       case "5":
         if (JSON.stringify(Menu5).indexOf(productCategory[submenu]) > -1) {
-          console.log("there");
         } else {
+          Categories.push(
+            "/category/" +
+              productCategory[0] +
+              "/" +
+              productCategory[1] +
+              "/" +
+              productCategory[2] +
+              "/" +
+              productCategory[3] +
+              "/" +
+              productCategory[4] +
+              "/" +
+              productCategory[submenu]
+          );
           Menu5.push(
             productsObject(
               productCategory[submenu],
               "/category/" +
                 productCategory[0] +
+                "/" +
+                productCategory[1] +
+                "/" +
+                productCategory[2] +
+                "/" +
+                productCategory[3] +
+                "/" +
+                productCategory[4] +
                 "/" +
                 productCategory[submenu],
               []
@@ -118,7 +179,7 @@ const DropdownMenu = () => {
         }
         break;
       default:
-        console.log("to Many subCategories");
+        console.log("to Many subCategories max: 6 current: " + submenu);
         break;
     }
   };
@@ -209,36 +270,12 @@ const DropdownMenu = () => {
         } else if (submenu === "6") {
           setAllProductsToMenu(submenu);
         }
-        // this is for subcategorys
-
-        // if (
-        //   JSON.stringify(Menu[MenuMainCategoryIndex].submenu).indexOf(
-        //     productCategory[submenu]
-        //   ) > -1
-        // ) {
-        //   console.log("there");
-        // } else {
-        //   Menu[MenuMainCategoryIndex].submenu.push(
-        //     productsObject(
-        //       productCategory[0],
-        //       "/category/" + product.mainCategory + "/" + productCategory[0],
-        //       []
-        //     )
-        //   );
-        // }
       }
     }
   };
 
   useEffect(() => {
     findAllProducts(Products);
-
-    //   productsMenu[0].submenu.push({
-    //     title: category,
-    //     linkTo: "/product" + product.category + product.id,
-    //   });
-
-    // const idx = Menu.findIndex((object) => object.submenu.title === subCategory);
   }, []);
 
   return (
@@ -272,11 +309,11 @@ const MenuItems = ({ items, depthLevel }) => {
   }, [dropdown]);
 
   const onMouseEnter = () => {
-    window.innerWidth > 960 && setDropdown(true);
+    window.innerWidth > 450 && setDropdown(true);
   };
 
   const onMouseLeave = () => {
-    window.innerWidth > 960 && setDropdown(false);
+    window.innerWidth > 450 && setDropdown(false);
   };
 
   return (
@@ -296,11 +333,10 @@ const MenuItems = ({ items, depthLevel }) => {
               {items.title}
             </a>
           )}
-
-          {depthLevel > 0 ? (
+          {depthLevel > 0 && items.submenu.length !== 0 ? (
             <StyledArrowSpan>{">"}</StyledArrowSpan>
           ) : (
-            <span className="arrow" />
+            <StyledArrowSpan className="arrow"></StyledArrowSpan>
           )}
           <Dropdown
             depthLevel={depthLevel}

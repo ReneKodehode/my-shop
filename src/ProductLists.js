@@ -1,3 +1,5 @@
+import watchImage1 from "./img/productImages/WatchImage1.jpg";
+
 const Products = [
   {
     id: 156,
@@ -8,7 +10,8 @@ const Products = [
     beforePrice: 2145,
     price: 2100,
     category: "/computer/computerComponents/cpu/",
-    image: ["image", "image2"],
+    image: [],
+    keywords: ["computer", "computerComponents", "cpu", "unit", "processing"],
   },
   {
     id: 182,
@@ -31,7 +34,7 @@ const Products = [
     beforePrice: 600,
     price: 300,
     category: "/appliance/cooler/",
-    image: ["image", "image2"],
+    image: [],
     keywords: ["cooler", "cold"],
   },
   {
@@ -39,33 +42,36 @@ const Products = [
     name: "gpu",
     description: "a computation processing unit",
     number: 1213,
-    rating: 6,
+    rating: 5.6,
     beforePrice: 10000,
     price: 6000,
     category: "/computer/computerComponents/gpu/",
-    image: ["image", "image2"],
+    image: [],
+    keywords: ["computer", "computerComponents", "gpu", "unit", "processing"],
+  },
+  {
+    id: 185,
+    name: "Galaxy watch",
+    description: "a beautiful smart watch, with black matt silicon strap",
+    number: 4596,
+    rating: 6,
+    beforePrice: 3050,
+    price: 2780,
+    category: "/accessory/watch/",
+    image: [watchImage1],
+    keywords: ["galaxy", "watch", "smart", "black", "matt", "silicon"],
   },
   {
     id: 141,
     name: "chair",
-    description: "a computation processing unit",
+    description: "a furniture to sit on",
     number: 1234,
     rating: 4.5,
     beforePrice: 2145,
     price: 2100,
     category: "/appliance/furniture/chair",
-    image: ["image", "image2"],
-  },
-  {
-    id: 14441,
-    name: "chair",
-    description: "a computation processing unit",
-    number: 12314,
-    rating: 4.53,
-    beforePrice: 123,
-    price: 123,
-    category: "/computer/computerComponents/gpu/chair/test/test1",
-    image: ["image", "image2"],
+    image: [],
+    keywords: ["chair", "appliance", "furniture"],
   },
 ];
 

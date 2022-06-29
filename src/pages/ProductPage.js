@@ -18,6 +18,7 @@ import {
 
 // import Products from "../ProductLists";
 import { useEffect, useState } from "react";
+import { empty } from "./landingPage/ShoppingCart";
 
 export default function ProductPage({ product }) {
   const [selectedProduct, selectedProductSet] = useState(product);
@@ -42,7 +43,13 @@ export default function ProductPage({ product }) {
 
       <ProductContent>
         <ProductMainDiv>
-          <ProductImageDiv></ProductImageDiv>
+          <ProductImageDiv>
+            {selectedProduct.image[0] !== [] ? (
+              <img src={selectedProduct.image[0]} height={"256"} />
+            ) : (
+              console.log("here")
+            )}
+          </ProductImageDiv>
         </ProductMainDiv>
 
         <ProductSecondaryDiv>

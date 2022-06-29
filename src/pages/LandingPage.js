@@ -1,5 +1,9 @@
 // import img from "../img/profile.svg";
 import {
+  ProductShowCase,
+  ProductShowCaseDiv,
+} from "../componentsGlobal/StyledComponentsGlobal";
+import {
   LandingPageContentDiv,
   StyledDecrementButton,
   StyledIncrementButton,
@@ -9,9 +13,14 @@ import {
 export default function LandingPage() {
   return (
     <LandingPageContentDiv>
-      <StyledDecrementButton />
+      <ProductShowCaseDiv>
+        <ProductShowCase productName={"Galaxy watch"}></ProductShowCase>
+        <ProductShowCase productName={"Galaxy watch"}></ProductShowCase>
+        <ProductShowCase productName={"Galaxy watch"}></ProductShowCase>
+      </ProductShowCaseDiv>
+      {/* <StyledDecrementButton />
       <StyledLabel />
-      <StyledIncrementButton />
+      <StyledIncrementButton /> */}
     </LandingPageContentDiv>
   );
 }
