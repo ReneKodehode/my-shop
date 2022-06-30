@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import MenuIcon from "./../img/Menu.svg";
 import Products from "../ProductLists";
 import Categories from "../CategoryList";
+import { Link } from "react-router-dom";
 
 //mainComponent
 const DropdownMenu = () => {
@@ -187,7 +188,7 @@ const DropdownMenu = () => {
   const productsObject = (title, linkTo, submenu) => {
     const object = {
       title: title,
-      linkTo: "/my-shop" + linkTo,
+      linkTo: linkTo,
       submenu: submenu,
     };
     return object;
@@ -329,9 +330,12 @@ const MenuItems = ({ items, depthLevel }) => {
               <img src={MenuIcon} alt="menu"></img>
             </a>
           ) : (
-            <a href={items.linkTo} onClick={() => setDropdown((prev) => !prev)}>
+            <Link
+              to={items.linkTo}
+              onClick={() => setDropdown((prev) => !prev)}
+            >
               {items.title}
-            </a>
+            </Link>
           )}
           {depthLevel > 0 && items.submenu.length !== 0 ? (
             <StyledArrowSpan>{">"}</StyledArrowSpan>
@@ -345,7 +349,7 @@ const MenuItems = ({ items, depthLevel }) => {
           />
         </>
       ) : (
-        <a href={items.linkTo}> {items.title} </a>
+        <Link to={items.linkTo}> {items.title} </Link>
       )}
     </StyledMenuItems>
   );

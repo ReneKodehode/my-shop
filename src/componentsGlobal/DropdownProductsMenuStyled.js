@@ -19,6 +19,18 @@ export const StyledMenuItems = styled.li`
     height: 2.5rem;
   }
 
+  link {
+    display: block;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+    text-align: left;
+    padding: 1rem 2rem;
+    width: 100%;
+  }
+  link:hover {
+    display: block;
+  }
   a {
     display: block;
     font-size: inherit;

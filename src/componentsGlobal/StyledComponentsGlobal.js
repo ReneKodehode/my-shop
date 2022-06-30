@@ -69,6 +69,11 @@ export const ProductShowCaseDiv = styled.div`
   justify-content: space-around;
 `;
 
+export const NoStyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 export const ProductShowCase = styled(productShowCase)`
   display: flex;
   flex-direction: column;
@@ -77,9 +82,6 @@ export const ProductShowCase = styled(productShowCase)`
   height: 25rem;
   width: 10rem;
 
-  span {
-    cursor: pointer;
-  }
   & img {
     height: auto;
     width: 10rem;
