@@ -187,7 +187,7 @@ const DropdownMenu = () => {
   const productsObject = (title, linkTo, submenu) => {
     const object = {
       title: title,
-      linkTo: linkTo,
+      linkTo: "/my-shop" + linkTo,
       submenu: submenu,
     };
     return object;

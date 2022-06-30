@@ -9,7 +9,10 @@ export const productShowCase = ({ className, productName }) => {
       <span
         onClick={() =>
           (window.location.href =
-            "/product" + selectedProduct.category + selectedProduct.id)
+            "/my-shop/" +
+            "product" +
+            selectedProduct.category +
+            selectedProduct.id)
         }
       >
         <img className={className} src={selectedProduct.image[0]}></img>

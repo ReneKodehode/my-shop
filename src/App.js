@@ -55,7 +55,7 @@ function App() {
           {selectedCategory.map((category, index) => (
             <Route
               key={index}
-              path={"/" + category}
+              path={`${category}`}
               element={<CategoryPage thisCategory={category} />}
             ></Route>
           ))}
