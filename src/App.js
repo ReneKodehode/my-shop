@@ -6,7 +6,6 @@ import {
   NavBar,
   NavLink,
   Logo,
-  SearchBar,
   ShoppingCart,
 } from "./componentsGlobal/StyledComponentsGlobal";
 import CategoryPage from "./pages/CategoryPage";
@@ -16,6 +15,8 @@ import ProductPage from "./pages/ProductPage";
 import Products from "./ProductLists";
 import Categories from "./CategoryList";
 import { useState, useEffect } from "react";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
+import { SearchBar } from "./componentsGlobal/SearchBar";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState([Categories]);
@@ -33,16 +34,13 @@ function App() {
           <DropdownMenu products={Products}></DropdownMenu>
           <SearchBar></SearchBar>
           <DropdownMenuComp />
-          <NavLink to="/product-page">
+          <NavLink to="/ShopCart">
             <ShoppingCart></ShoppingCart>
           </NavLink>
         </NavBar>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route
-            path="/product-page"
-            element={<ProductPage product={Products[1]} />}
-          />
+          <Route path="/ShopCart" element={<ShoppingCartPage />} />
           {/* add routes to each product */}
           {Products.map((product, index) => (
             <Route

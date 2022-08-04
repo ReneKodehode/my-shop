@@ -12,26 +12,63 @@ import {
 
 export default function CategoryPage({ thisCategory }) {
   const [newArray, setNewArray] = useState([]);
-  const [newCategory, setnewCategory] = useState(
+  const [newCategory, setNewCategory] = useState(
     thisCategory.split("/").filter((n) => n)
   );
 
   useEffect(() => {
-    setnewCategory(thisCategory.split("/").filter((n) => n));
+    setNewCategory(thisCategory.split("/").filter((n) => n));
+  }, [thisCategory]);
+
+  useEffect(() => {
     for (let some in newCategory) {
       if (some === "1") {
-        newArray.push(newCategory[1]);
+        setNewArray((newArray) => [`${newCategory[1]}`]);
       }
       if (some === "2") {
-        newArray.push(newCategory[1] + "/" + newCategory[2]);
+        setNewArray((newArray) => [
+          ...newArray,
+          `${newCategory[1] + "/" + newCategory[2]}`,
+        ]);
       }
       if (some === "3") {
-        newArray.push(
-          newCategory[1] + "/" + newCategory[2] + "/" + newCategory[3]
-        );
+        setNewArray((newArray) => [
+          ...newArray,
+          `${newCategory[1] + "/" + newCategory[2] + "/" + newCategory[3]}`,
+        ]);
+      }
+      if (some === "4") {
+        setNewArray((newArray) => [
+          ...newArray,
+          `${
+            newCategory[1] +
+            "/" +
+            newCategory[2] +
+            "/" +
+            newCategory[3] +
+            "/" +
+            newCategory[4]
+          }`,
+        ]);
+      }
+      if (some === "5") {
+        setNewArray((newArray) => [
+          ...newArray,
+          `${
+            newCategory[1] +
+            "/" +
+            newCategory[2] +
+            "/" +
+            newCategory[3] +
+            "/" +
+            newCategory[4] +
+            "/" +
+            newCategory[5]
+          }`,
+        ]);
       }
     }
-  }, [thisCategory]);
+  }, [thisCategory, newCategory]);
 
   const splitCategory = thisCategory.split("/").filter((n) => n);
   const selectedCategory = splitCategory.pop();
@@ -46,7 +83,6 @@ export default function CategoryPage({ thisCategory }) {
     }
   }
 
-  console.log(newArray);
   return (
     <CategoryPageDiv>
       <ShortcutLinkDiv>

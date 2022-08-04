@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { ShoppingCartList } from "../pages/landingPage/ShoppingCart";
+import { ShoppingCartList } from "../ShoppingCart";
 
 export default configureStore({
   reducer: {

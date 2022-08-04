@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import search from "../img/Search.svg";
-import { searchBar, shopCart } from "./ComponentsGlobal";
+import { AddToCart, searchBarInput, shopCart } from "./ComponentsGlobal";
 import { productShowCase } from "./ProductShowCase";
 
 export const NavBar = styled.div`
@@ -41,7 +41,7 @@ export const MainCategory = styled.li`
   color: blue;
 `;
 
-export const SearchBar = styled(searchBar)`
+export const SearchBarInput = styled(searchBarInput)`
   flex: 1;
   margin-right: auto;
   background-image: url(${search});
@@ -53,10 +53,49 @@ export const SearchBar = styled(searchBar)`
   font-size: 1.2rem;
   border: 0.2rem black solid;
   width: 100%;
+  max-width: 50rem;
 `;
 
+export const SearchBarResultDiv = styled.div`
+  position: absolute;
+  border: 2px solid black;
+  width: auto;
+  height: auto;
+  margin-top: 2rem;
+  margin-left: -2px;
+  background-color: black;
+`;
+
+export const SearchBarProductResultDiv = styled.div`
+  display: flex;
+  color: white;
+
+  :hover {
+    background-color: gray;
+    filter: brightness(1.2);
+  }
+`;
+
+export const SearchBarProductTextDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 8rem;
+`;
+
+export const SearchBarProductName = styled.h2`
+  font-size: 2rem;
+`;
+
+export const SearchBarProductDisc = styled.p`
+  margin: 0;
+  font-weight: 200;
+`;
+
+export const SearchBarProductId = styled.p``;
+
 export const ShoppingCart = styled(shopCart)`
-  justify-self: center;
+  justify-self: right;
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 1rem;
@@ -74,6 +113,27 @@ export const NoStyledLink = styled(Link)`
   color: black;
 `;
 
+export const NoStyledLinkWhite = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
+export const AddToCartStyled = styled(AddToCart)`
+  color: white;
+  border: none;
+  background: black;
+  height: 2rem;
+
+  :hover {
+    filter: brightness(1.2);
+  }
+`;
+
+export const SearchBarMainDiv = styled.div`
+  display: flex;
+  margin-right: auto;
+`;
+
 export const ProductShowCase = styled(productShowCase)`
   display: flex;
   flex-direction: column;
@@ -85,14 +145,5 @@ export const ProductShowCase = styled(productShowCase)`
   & img {
     height: auto;
     width: 10rem;
-  }
-  & button {
-    color: white;
-    border: none;
-    background: black;
-    height: 2rem;
-  }
-  button:hover {
-    filter: brightness(1.2);
   }
 `;

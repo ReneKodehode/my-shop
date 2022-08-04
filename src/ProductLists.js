@@ -12,6 +12,7 @@ const Products = [
     category: "/computer/computerComponents/cpu/",
     image: [],
     keywords: ["computer", "computerComponents", "cpu", "unit", "processing"],
+    quantity: 1,
   },
   {
     id: 182,
@@ -24,6 +25,20 @@ const Products = [
     category: "/appliance/freezer/",
     image: ["image", "image2"],
     keywords: ["freezer", "cold"],
+    quantity: 1,
+  },
+  {
+    id: 12344,
+    name: "new",
+    description: "a new to new stuff",
+    number: 1234,
+    rating: 4.49,
+    beforePrice: 900,
+    price: 600,
+    category: "/appliance/new/hello/here/",
+    image: ["image", "image2"],
+    keywords: ["freezer", "cold"],
+    quantity: 1,
   },
   {
     id: 183,
@@ -36,6 +51,7 @@ const Products = [
     category: "/appliance/cooler/",
     image: [],
     keywords: ["cooler", "cold"],
+    quantity: 1,
   },
   {
     id: 113,
@@ -48,6 +64,7 @@ const Products = [
     category: "/computer/computerComponents/gpu/",
     image: [],
     keywords: ["computer", "computerComponents", "gpu", "unit", "processing"],
+    quantity: 1,
   },
   {
     id: 185,
@@ -60,6 +77,7 @@ const Products = [
     category: "/accessory/watch/",
     image: [watchImage1],
     keywords: ["galaxy", "watch", "smart", "black", "matt", "silicon"],
+    quantity: 1,
   },
   {
     id: 141,
@@ -72,6 +90,7 @@ const Products = [
     category: "/appliance/furniture/chair",
     image: [],
     keywords: ["chair", "appliance", "furniture"],
+    quantity: 1,
   },
 ];
 
