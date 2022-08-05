@@ -116,7 +116,7 @@ export const TotalCheckout = () => {
     shallowEqual
   );
   for (const product of count) {
-    sum += sum + product.beforePrice * product.quantity;
+    sum += product.beforePrice * product.quantity;
     discount += (product.beforePrice - product.price) * product.quantity;
     sumIncDiscount += product.price * product.quantity;
   }

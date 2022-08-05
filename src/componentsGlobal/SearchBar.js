@@ -65,10 +65,7 @@ export const SearchBarContainer = ({ searchBarValue, inputRef }) => {
 
 export const SearchBarProductResult = ({ product }) => {
   return (
-    <NoStyledLinkWhite
-      to={"../product" + product.category + product.id}
-      color={"white"}
-    >
+    <NoStyledLinkWhite to={"../product" + product.category + product.id}>
       <SearchBarProductResultDiv key={product.id}>
         <img
           src={product.image[0]}

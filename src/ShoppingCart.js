@@ -11,13 +11,15 @@ export const ShoppingCartList = createSlice({
         state.ShoppingCartList.push(action.payload);
         console.log(state.ShoppingCartList[0].name);
       } else {
+        let isThereNoDuplicates = true;
         for (const some of state.ShoppingCartList) {
           if (some.id === action.payload.id) {
-            console.log("dups");
-          } else {
-            state.ShoppingCartList.push(action.payload);
-            console.log(state.ShoppingCartList[0].name);
+            isThereNoDuplicates = false;
           }
+        }
+        if (isThereNoDuplicates) {
+          state.ShoppingCartList.push(action.payload);
+          console.log(state.ShoppingCartList[0].name);
         }
       }
     },

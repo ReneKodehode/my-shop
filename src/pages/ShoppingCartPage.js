@@ -4,8 +4,6 @@ import {
   UseClearListButton,
 } from "./shoppingCartPage/ShoppingCartComponents";
 import {
-  CheckOutButton,
-  CheckOutDiv,
   CheckOutMainDiv,
   ShoppingCartDiv,
   Title,

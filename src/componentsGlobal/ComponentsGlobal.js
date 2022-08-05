@@ -1,10 +1,25 @@
 import React from "react";
 import ShopCart from "../img/ShopCart.svg";
 import { add } from "./../ShoppingCart";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { UseShoppingCartCounter } from "./StyledComponentsGlobal";
+
+export const useShoppingCartCounter = ({ className }) => {
+  let count = useSelector(
+    (state) => state.ShoppingCart.ShoppingCartList,
+    shallowEqual
+  );
+
+  return <p className={className}>{count.length}</p>;
+};
 
 export const shopCart = ({ className }) => {
-  return <img src={ShopCart} alt="Shopping Cart" className={className}></img>;
+  return (
+    <>
+      <img src={ShopCart} alt="Shopping Cart" className={className}></img>
+      <UseShoppingCartCounter></UseShoppingCartCounter>
+    </>
+  );
 };
 
 export const AddToCart = ({ className, product }) => {

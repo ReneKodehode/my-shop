@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import search from "../img/Search.svg";
-import { AddToCart, searchBarInput, shopCart } from "./ComponentsGlobal";
+import {
+  AddToCart,
+  searchBarInput,
+  shopCart,
+  useShoppingCartCounter,
+} from "./ComponentsGlobal";
 import { productShowCase } from "./ProductShowCase";
 
 export const NavBar = styled.div`
@@ -99,6 +104,18 @@ export const ShoppingCart = styled(shopCart)`
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 1rem;
+`;
+
+export const UseShoppingCartCounter = styled(useShoppingCartCounter)`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: black;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
 `;
 
 export const ProductShowCaseDiv = styled.div`
