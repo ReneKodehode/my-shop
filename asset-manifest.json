@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-shop/static/css/main.08238b87.css",
-    "main.js": "/my-shop/static/js/main.8497414f.js",
+    "main.js": "/my-shop/static/js/main.2f85ec64.js",
     "static/js/787.6521655c.chunk.js": "/my-shop/static/js/787.6521655c.chunk.js",
     "static/media/WatchImage1.jpg": "/my-shop/static/media/WatchImage1.9bf1e059d1472ef06143.jpg",
     "static/media/EmptyStar.svg": "/my-shop/static/media/EmptyStar.7478fb36fcfcc079f7479a34bf14b1fe.svg",
@@ -13,11 +13,11 @@
     "static/media/Menu.svg": "/my-shop/static/media/Menu.4de0b64b468d9cdbdd41f4d490765099.svg",
     "static/media/User.svg": "/my-shop/static/media/User.b5a93b75482006a021e0945870345ea5.svg",
     "main.08238b87.css.map": "/my-shop/static/css/main.08238b87.css.map",
-    "main.8497414f.js.map": "/my-shop/static/js/main.8497414f.js.map",
+    "main.2f85ec64.js.map": "/my-shop/static/js/main.2f85ec64.js.map",
     "787.6521655c.chunk.js.map": "/my-shop/static/js/787.6521655c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.08238b87.css",
-    "static/js/main.8497414f.js"
+    "static/js/main.2f85ec64.js"
   ]
 }
