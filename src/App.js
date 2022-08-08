@@ -46,7 +46,12 @@ function App() {
             <Route
               key={index}
               path={`/product${product.category}${product.id}`}
-              element={<ProductPage product={product} />}
+              element={
+                <ProductPage
+                  product={product}
+                  selectedCategory={selectedCategory}
+                />
+              }
             ></Route>
           ))}
           {/* add routes to each category */}

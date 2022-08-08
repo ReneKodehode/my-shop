@@ -14,16 +14,16 @@ import {
   ProductTextDiv,
   ProductTitle,
 } from "./productPage/ProductStyle";
-
-// import Products from "../ProductLists";
 import { useState } from "react";
 import { AddToCartStyled } from "../componentsGlobal/StyledComponentsGlobal";
+import { BreadCrumbs } from "../componentsGlobal/breadcrumbs";
 
 export default function ProductPage({ product }) {
   const [selectedProduct, selectedProductSet] = useState(product);
   return (
     <ProductPageContentDiv>
       <ProductHeader>
+        <BreadCrumbs thisCategory={product.category}></BreadCrumbs>
         <ProductTextDiv>
           <ProductTitle>{selectedProduct.name}</ProductTitle>
           <ProductDescription>{selectedProduct.description}</ProductDescription>

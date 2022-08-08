@@ -5,22 +5,20 @@ import {
 } from "../componentsGlobal/StyledComponentsGlobal";
 import {
   LandingPageContentDiv,
-  StyledDecrementButton,
-  StyledIncrementButton,
-  StyledLabel,
+  ShowCaseDiv,
 } from "./landingPage/LandingPageStyle";
 
 export default function LandingPage() {
   return (
     <LandingPageContentDiv>
+      <ShowCaseDiv>
+        <h2>Most Sold Products:</h2>
+      </ShowCaseDiv>
       <ProductShowCaseDiv>
         <ProductShowCase productName={"Galaxy watch"}></ProductShowCase>
         <ProductShowCase productName={"Galaxy watch"}></ProductShowCase>
         <ProductShowCase productName={"Galaxy watch"}></ProductShowCase>
       </ProductShowCaseDiv>
-      {/* <StyledDecrementButton />
-      <StyledLabel />
-      <StyledIncrementButton /> */}
     </LandingPageContentDiv>
   );
 }

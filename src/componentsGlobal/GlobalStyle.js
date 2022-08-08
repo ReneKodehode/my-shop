@@ -16,4 +16,11 @@ h2{
 p{
     font-size: 1rem;
 }
+
+button{
+
+    :active{
+        color:black;
+    }
+}
 `;

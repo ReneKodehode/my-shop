@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  NoStyledLink,
   NoStyledLinkWhite,
   SearchBarInput,
   SearchBarMainDiv,
@@ -43,23 +42,82 @@ export const SearchBar = () => {
   );
 };
 
+function FindRelatedToSearch(products, searchBarValue) {
+  const search = searchBarValue.toLowerCase().split(" ");
+  const returnResults = new Set();
+
+  for (const product of products) {
+    const name = product.name.toLowerCase();
+    const keywords = [];
+    const descriptions = [];
+    for (const keyword of product.keywords) {
+      keywords.push(keyword.toLowerCase());
+    }
+    for (const description of product.description) {
+      descriptions.push(description.toLowerCase());
+    }
+    for (const some of search) {
+      if (some === name) {
+        returnResults.add(product);
+      } else if (keywords.includes(some)) {
+        returnResults.add(product);
+      } else if (descriptions.includes(some)) {
+        returnResults.add(product);
+      }
+    }
+  }
+
+  return Array.from(returnResults);
+}
+
 export const SearchBarContainer = ({ searchBarValue, inputRef }) => {
-  const [productSearch, setProductSearch] = useState(Products[5]);
-  if (searchBarValue) {
+  const [productSearch, setProductSearch] = useState([]);
+
+  useEffect(() => {
+    setProductSearch(FindRelatedToSearch(Products, searchBarValue));
+  }, [searchBarValue]);
+
+  console.log(productSearch.length);
+
+  if (searchBarValue && productSearch.length) {
     console.log(productSearch);
-    return (
-      <SearchBarResultDiv ref={inputRef}>
-        <SearchBarProductResult
-          product={productSearch}
-        ></SearchBarProductResult>
-        <SearchBarProductResult
-          product={productSearch}
-        ></SearchBarProductResult>
-        <SearchBarProductResult
-          product={productSearch}
-        ></SearchBarProductResult>
-      </SearchBarResultDiv>
-    );
+
+    for (const some of productSearch) {
+      if (productSearch.length === 1) {
+        return (
+          <SearchBarResultDiv ref={inputRef}>
+            <SearchBarProductResult
+              product={productSearch[0]}
+            ></SearchBarProductResult>
+          </SearchBarResultDiv>
+        );
+      } else if (productSearch.length === 2) {
+        return (
+          <SearchBarResultDiv ref={inputRef}>
+            <SearchBarProductResult
+              product={productSearch[0]}
+            ></SearchBarProductResult>
+            <SearchBarProductResult
+              product={productSearch[1]}
+            ></SearchBarProductResult>
+          </SearchBarResultDiv>
+        );
+      } else {
+      }
+      return (
+        <SearchBarResultDiv ref={inputRef}>
+          <SearchBarProductResult
+            product={productSearch[0]}
+          ></SearchBarProductResult>
+          <SearchBarProductResult
+            product={productSearch[1]}
+          ></SearchBarProductResult>
+          <SearchBarProductResult
+            product={productSearch[2]}
+          ></SearchBarProductResult>
+        </SearchBarResultDiv>
+      );
+    }
   }
 };
 

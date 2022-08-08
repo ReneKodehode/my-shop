@@ -106,6 +106,10 @@ export const ShoppingCart = styled(shopCart)`
   margin-right: 1rem;
 `;
 
+export const StyledLink = styled(Link)`
+  color: black;
+`;
+
 export const UseShoppingCartCounter = styled(useShoppingCartCounter)`
   position: absolute;
   top: 5px;
@@ -122,7 +126,7 @@ export const ProductShowCaseDiv = styled.div`
   display: flex;
   flex-direction: row;
   width: 100vw;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 export const NoStyledLink = styled(Link)`
