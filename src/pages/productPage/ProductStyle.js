@@ -13,6 +13,16 @@ export const ProductDescription = styled.h2``;
 
 export const ProductIdAndNumber = styled.h6``;
 
+export const ProductDescriptionDiv = styled.div`
+  width: 100%;
+  height: 20rem;
+  background-color: #b6b6b6;
+
+  &.gray {
+    background-color: #646464;
+  }
+`;
+
 export const ProductMainDiv = styled.div`
   width: 75vw;
 `;

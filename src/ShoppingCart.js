@@ -19,12 +19,19 @@ export const ShoppingCartList = createSlice({
         }
         if (isThereNoDuplicates) {
           state.ShoppingCartList.push(action.payload);
-          console.log(state.ShoppingCartList[0].name);
+          console.log(action.payload);
         }
       }
     },
     remove: (state, action) => {
-      state.ShoppingCartList.pop(action.payload);
+      for (const some of state.ShoppingCartList) {
+        if (action.payload.id === some.id) {
+          state.ShoppingCartList.splice(
+            state.ShoppingCartList.indexOf(some),
+            1
+          );
+        }
+      }
     },
     quantityInc: (state, action) => {
       for (const some of state.ShoppingCartList) {

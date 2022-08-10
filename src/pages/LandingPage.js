@@ -1,4 +1,3 @@
-// import img from "../img/profile.svg";
 import {
   ProductShowCase,
   ProductShowCaseDiv,

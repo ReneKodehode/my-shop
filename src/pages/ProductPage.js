@@ -2,6 +2,7 @@ import {
   ProductBeforePrice,
   ProductContent,
   ProductDescription,
+  ProductDescriptionDiv,
   ProductHeader,
   ProductIdAndNumber,
   ProductImageDiv,
@@ -54,6 +55,16 @@ export default function ProductPage({ product }) {
             <ProductNowPrice>{selectedProduct.price}.-</ProductNowPrice>
             <AddToCartStyled product={selectedProduct}></AddToCartStyled>
           </ProductShopDiv>
+        </ProductSecondaryDiv>
+      </ProductContent>
+
+      <ProductContent>
+        <ProductMainDiv>
+          <ProductDescriptionDiv className="gray"></ProductDescriptionDiv>
+        </ProductMainDiv>
+
+        <ProductSecondaryDiv>
+          <ProductDescriptionDiv></ProductDescriptionDiv>
         </ProductSecondaryDiv>
       </ProductContent>
     </ProductPageContentDiv>

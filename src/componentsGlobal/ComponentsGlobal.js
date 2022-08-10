@@ -3,6 +3,7 @@ import ShopCart from "../img/ShopCart.svg";
 import { add } from "./../ShoppingCart";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { UseShoppingCartCounter } from "./StyledComponentsGlobal";
+import supIcon from "./../img/Support.svg";
 
 export const useShoppingCartCounter = ({ className }) => {
   let count = useSelector(
@@ -29,6 +30,10 @@ export const AddToCart = ({ className, product }) => {
       Add to Cart
     </button>
   );
+};
+
+export const supportIcon = ({ className, compRef }) => {
+  return <img ref={compRef} className={className} src={supIcon}></img>;
 };
 
 export const searchBarInput = ({

@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DropdownMenu from "./componentsGlobal/DropdownProductsMenuComp";
-import DropdownMenuComp from "./componentsGlobal/DropDownUserMenu";
 import { GlobalStyled } from "./componentsGlobal/GlobalStyle";
 import {
   NavBar,
   NavLink,
   Logo,
   ShoppingCart,
+  SupportIcon,
 } from "./componentsGlobal/StyledComponentsGlobal";
 import CategoryPage from "./pages/CategoryPage";
 import LandingPage from "./pages/LandingPage.js";
@@ -17,6 +17,7 @@ import Categories from "./CategoryList";
 import { useState, useEffect } from "react";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import { SearchBar } from "./componentsGlobal/SearchBar";
+import { SupportComp } from "./componentsGlobal/SupportComp";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState([Categories]);
@@ -33,7 +34,7 @@ function App() {
           <Logo to="/">My-Shop</Logo>
           <DropdownMenu products={Products}></DropdownMenu>
           <SearchBar></SearchBar>
-          <DropdownMenuComp />
+          <SupportComp />
           <NavLink to="/ShopCart">
             <ShoppingCart></ShoppingCart>
           </NavLink>

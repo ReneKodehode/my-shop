@@ -5,6 +5,7 @@ import {
   AddToCart,
   searchBarInput,
   shopCart,
+  supportIcon,
   useShoppingCartCounter,
 } from "./ComponentsGlobal";
 import { productShowCase } from "./ProductShowCase";
@@ -71,6 +72,21 @@ export const SearchBarResultDiv = styled.div`
   background-color: black;
 `;
 
+export const SupportDropDownDiv = styled.div`
+  position: absolute;
+  border: 2px solid black;
+  width: auto;
+  height: auto;
+  margin-left: -12rem;
+  border-radius: 8px;
+  background-color: black;
+
+  h2 {
+    color: white;
+    text-align: center;
+  }
+`;
+
 export const SearchBarProductResultDiv = styled.div`
   display: flex;
   color: white;
@@ -104,6 +120,10 @@ export const ShoppingCart = styled(shopCart)`
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 1rem;
+`;
+
+export const SupportIcon = styled(supportIcon)`
+  width: 2.5rem;
 `;
 
 export const StyledLink = styled(Link)`
