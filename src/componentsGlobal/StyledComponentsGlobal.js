@@ -77,13 +77,16 @@ export const SupportDropDownDiv = styled.div`
   border: 2px solid black;
   width: auto;
   height: auto;
-  margin-left: -12rem;
+  margin-left: -8rem;
   border-radius: 8px;
   background-color: black;
 
   h2 {
     color: white;
     text-align: center;
+    &.text {
+      font-size: 1.5rem;
+    }
   }
 `;
 

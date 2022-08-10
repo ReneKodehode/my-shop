@@ -38,9 +38,9 @@ export const SupportCOntainer = ({ isActive }) => {
       <SupportDropDownDiv>
         <h2>Support</h2>
         <hr color="white"></hr>
-        <h2>call: </h2>
-        <h2>999 999 999</h2>
-        <h2>email: some@email.com</h2>
+        <h2 className="text">call: </h2>
+        <h2 className="text">999 999 999</h2>
+        <h2 className="text">email: some@email.com</h2>
       </SupportDropDownDiv>
     );
   }
