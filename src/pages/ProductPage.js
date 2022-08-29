@@ -58,7 +58,7 @@ export default function ProductPage({ product }) {
         </ProductSecondaryDiv>
       </ProductContent>
 
-      <ProductContent>
+      {/* <ProductContent>
         <ProductMainDiv>
           <ProductDescriptionDiv className="gray"></ProductDescriptionDiv>
         </ProductMainDiv>
@@ -66,7 +66,7 @@ export default function ProductPage({ product }) {
         <ProductSecondaryDiv>
           <ProductDescriptionDiv></ProductDescriptionDiv>
         </ProductSecondaryDiv>
-      </ProductContent>
+      </ProductContent> */}
     </ProductPageContentDiv>
   );
 }
